@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/main.dart';
+import 'package:weather_app/models/wheather.dart';
 import 'package:weather_app/views/searchingView.dart';
 import 'package:weather_app/widgets/noWeather.dart';
 import 'package:weather_app/widgets/weatherDataDisplay.dart';
 
 class homeView extends StatelessWidget {
-  const homeView({super.key});
+  homeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class homeView extends StatelessWidget {
               icon: Icon(Icons.search))
         ],
       ),
-      body: weatherDataDisplay(),
+      body: getWeatherModel == null ? noWeather() : weatherDataDisplay(),
     );
   }
 }

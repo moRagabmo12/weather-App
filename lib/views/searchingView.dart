@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/wheather.dart';
+import 'package:weather_app/services/weatherService.dart';
+import 'package:weather_app/views/homeView.dart';
 
 class searchingView extends StatelessWidget {
   const searchingView({super.key});
@@ -13,8 +16,10 @@ class searchingView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: TextField(
-            onSubmitted: (value) {
-              print(value);
+            onSubmitted: (value) async {
+              getWeatherModel =
+                  await weatherService().getweather(cityName: value);
+              Navigator.of(context).pop();
             },
             decoration: InputDecoration(
               suffixIcon: Icon(Icons.search),
@@ -32,3 +37,5 @@ class searchingView extends StatelessWidget {
     );
   }
 }
+
+weatherModel? getWeatherModel;

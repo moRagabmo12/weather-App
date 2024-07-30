@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:weather_app/models/wheather.dart';
@@ -13,16 +13,14 @@ class weatherService {
       Response response =
           await dio.get("$baseUrl/forecast.json?key=$apiKey&q=$cityName");
 
-      weatherModel weatherModle = weatherModel.formJson(response.data);
-
-      return weatherModle;
+      weatherModel weatherModle1 = weatherModel.formJson(response.data);
+      return weatherModle1;
     } on DioException catch (e) {
-      // TODO
       final String errorMessage = e.response?.data["error"]['message'] ??
           "oops there was an error ,try later";
-      return throw (errorMessage);
+      throw Exception(errorMessage);
     } catch (e) {
-      return throw Exception('oops there was an error ,try later');
+      throw Exception('oops there was an error ,try  again');
     }
 
     // oops was an error ,try later
