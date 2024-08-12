@@ -30,7 +30,7 @@ class homeView extends StatelessWidget {
               icon: Icon(Icons.search))
         ],
       ),
-      body: getWeatherModel == null ? noWeather() : weatherDataDisplay(),
+      body: noWeather(),
     );
   }
 }
